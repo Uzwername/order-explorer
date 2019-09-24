@@ -3,44 +3,36 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Navigation } from "IndexComponents/navigation";
 import { MainContent } from "IndexComponents/mainContent";
+import { createMuiTheme } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/styles";
 
-if (process.env.NODE_ENV !== `production`) {
-	const axe = require( `react-axe` );
-	axe(React, ReactDOM, 1000);
-}
+const Index = () => (
+	<>
+		<Navigation />
+		<MainContent />
+	</>
+);
 
-/* All written
-above are just placeholders
-to check babel
-Delete it */
-const getSite = async url => {
-
-	const response = await fetch( url );
-
-	console.log( await response.json() );
-
-};
-
-getSite(`https://services.arcgis.com/hkQNLKNeDVYBjvFE/arcgis/rest/services/BIC/FeatureServer/2/query?where=1%3D1&outFields=*&outSR=4326&f=json`);
-
-
-let map = new Map([
-	[`1`,`2`],
-	[`3`,`4`]
-]);
-
-console.log( map );
-
-const Index = () => {
-	return (
-		<>
-			<Navigation />
-			<MainContent />
-		</>
-	);
-};
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#757ce8',
+      main: '#00FF00',
+      dark: '#002884',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
+});
 
 ReactDOM.render (
-	<Index />,
+	<ThemeProvider theme = {theme}>
+		<Index />
+	</ThemeProvider>,
 	document.getElementById(`app`)
 );

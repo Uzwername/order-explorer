@@ -1,12 +1,37 @@
 import React from "react";
-import styles from "IndexStyles/navigation.scss";
+import TextField from "@material-ui/core/TextField";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import IconButton from "@material-ui/core/IconButton";
+import SearchIcon from "@material-ui/icons/Search";
+import navStyles from "IndexStyles/navigation.scss";
 
 export const Navigation = () => {
 	return (
-		<nav id={styles.mainNav}>
-			<h1>
-				Hello, <span className={styles.highlighted}>React</span>!
-			</h1>
+		<nav id = { navStyles.mainNav }>
+			<div class = { navStyles.searchContainer }>
+				<TextField
+					id = "searchBar"
+					label = "Search"
+					placeholder = "#3418"
+					fullWidth
+					variant = "outlined"
+					InputLabelProps = {{
+						shrink: true,
+					}}
+					InputProps = {{
+						endAdornment: (
+							<InputAdornment position = "end">
+							<IconButton
+							aria-label = "Search orders"
+							onClick={() => alert(`Hi!`)}
+							>
+								<SearchIcon />
+							</IconButton>
+							</InputAdornment>
+						),
+					}}
+				/>
+			</div>
 		</nav>
 	);
 };
