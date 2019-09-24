@@ -1,6 +1,6 @@
 {
   "name": "order-explorer",
-  "version": "0.0.1 pre-release@alfa",
+  "version": "0.0.1",
   "description": "Sample order page visualiser.",
   "private": true,
   "browserslist": "last 2 versions",
