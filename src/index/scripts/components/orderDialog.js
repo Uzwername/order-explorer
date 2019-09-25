@@ -6,17 +6,29 @@ import contentStyles from "IndexStyles/mainContent.scss";
 
 export const OrderDialog = props => {
 
-	const open = (Object.values(props.order).length === 0) ?
-		false :
-		true;
+	const orderIsEmpty = (Object.values(props.order).length === 0);
+
+	const json = JSON.stringify(
+		props.order,
+		null,
+		2
+	);
+
+	// Prevents glitch (content flash) on close
+	const classes = orderIsEmpty ?
+		[contentStyles.dialogWindow, contentStyles.hidden] :
+		contentStyles.dialogWindow;
 
 	return (
 		<Dialog
-			open = { open }
+			open = { !orderIsEmpty }
 			onClose = { props.handleClose }
-			className = { contentStyles.dialogWindow }
+			className = { classes }
 			aria-labelledby = "dialogTitle"
 		>
+			{
+
+			}
 			<DialogTitle
 				className = {contentStyles.dialogTitle}
 			>
@@ -26,12 +38,7 @@ export const OrderDialog = props => {
 				className = {contentStyles.prettyJSON}
 			>
 				{
-					//Pretty-prints JSON
-					JSON.stringify(
-						props.order,
-						null,
-						2
-					)
+					json
 				}
 			</pre>
 		</Dialog>

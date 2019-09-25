@@ -116,3 +116,18 @@ export const getOrders = () => {
 	return allOrders;
 
 };
+
+export const subscribeOrdersUpdates = callback => {
+
+	/**
+	* Runs getOrders every
+	* minute passing provided
+	* callback
+	*/
+	setInterval(
+		getOrders,
+		5000,
+		callback
+	);
+
+};

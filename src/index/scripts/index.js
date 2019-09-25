@@ -1,17 +1,9 @@
 import "IndexStyles/index.scss";
 import React from "react";
 import ReactDOM from "react-dom";
-import { Navigation } from "IndexComponents/navigation";
-import { MainContentContainer } from "IndexContainers/mainContentContainer";
+import { AppContainer } from "IndexContainers/appContainer";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
-
-const Index = () => (
-	<>
-	<Navigation />
-		<MainContentContainer />
-	</>
-);
 
 const theme = createMuiTheme({
 	palette: {
@@ -30,7 +22,7 @@ const theme = createMuiTheme({
 
 ReactDOM.render (
 	<ThemeProvider theme = {theme}>
-		<Index />
+		<AppContainer />
 	</ThemeProvider>,
 	document.getElementById(`app`)
 );

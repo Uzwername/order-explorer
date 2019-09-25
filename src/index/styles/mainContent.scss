@@ -2,9 +2,15 @@
 	text-align: center;
 }
 
+.hidden {
+	display: none;
+	overflow: hidden;
+	opacity: 0;
+}
+
 .tabContainer {
 	width: fit-content;
-	margin: auto;
+	margin: 5% auto 0;
 }
 
 .board {
