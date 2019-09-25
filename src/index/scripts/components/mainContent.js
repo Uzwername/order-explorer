@@ -2,28 +2,63 @@ import React from "react";
 import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
+import Typography from "@material-ui/core/Typography";
 import mainContentStyles from "IndexStyles/mainContent.scss";
+import PropTypes from "prop-types";
 
-export const MainContent = () => {
+export const MainContent = props => {
 
-	const [currentTab, setCurrentTab] = React.useState(0);
+	/**
+	* Generates a "card"
+	* for each order.
+	*/
+	const orderCards = props.orders.map(
+		e => (
+			<Paper
+				key = { e.OrderID }
+				className = { mainContentStyles.adaptivePaper }
+			>
+				<Typography
+					variant = "h6"
+					component = "p"
+				>
+					{ `#${e.OrderID}` }
+				</Typography>
+				<Typography
+					variant = "p"
+					component = "p"
+				>
+					{ e.Total }
+				</Typography>
+			</Paper>
+		)
+	);
 
-  const handleChange = (event, newValue) => setCurrentTab(newValue);
+	return (
+		<>
+			<div className = { mainContentStyles.tabContainer }>
+				<Paper square>
+					<Tabs
+						value = { props.activeTab }
+						indicatorColor = "primary"
+						textColor = "primary"
+						onChange = { props.setActiveTab }
+						aria-label = "View mode switcher"
+					>
+						<Tab label = "All Orders" />
+						<Tab label = "Stage View" />
+					</Tabs>
+				</Paper>
+			</div>
+			<div className = { mainContentStyles.board }>
+				{ orderCards }
+			</div>
+		</>
+	);
+};
 
-  return (
-		<div class = { mainContentStyles.tabContainer }>
-	    <Paper square>
-	      <Tabs
-	        value = { currentTab }
-	        indicatorColor = "primary"
-	        textColor = "primary"
-	        onChange = { handleChange }
-	        aria-label = "View mode switcher"
-	      >
-	        <Tab label = "All Orders" />
-	        <Tab label = "Stage View" />
-	      </Tabs>
-	    </Paper>
-		</div>
-  );
+MainContent.propTypes = {
+	activeTab: PropTypes.number.isRequired,
+	setActiveTab: PropTypes.func.isRequired,
+	orders: PropTypes.array.isRequired,
 };

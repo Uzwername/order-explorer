@@ -2,3 +2,20 @@
 	width: fit-content;
 	margin: auto;
 }
+
+.board {
+	width: 90%;
+	margin: 5% auto;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+}
+
+.adaptivePaper {
+	margin: 2.5%;
+	padding: 2.5%;
+	overflow: hidden;
+	flex: 1 1 100px;
+	max-width: 350px;
+	min-width: 100px;
+}
