@@ -9,12 +9,18 @@ import { getOrders } from "./../helpers/getOrders.js";
 export const AppContainer = () => {
 
 	useEffect(() => {
-		/** Fetches (possibly new) orders
+		/**
+		* Fetches (possibly new) orders
 		* each minute
 		*/
-		const interval = setInterval(() => {
-			setOrders(getOrders());
-		}, 60000);
+		const interval = setInterval(
+			() => {
+				setOrders(
+					getOrders()
+				);
+			},
+			60000
+		);
 		return () => clearInterval(interval);
 	}, []);
 
@@ -48,6 +54,11 @@ export const AppContainer = () => {
 	* Constructs object with
 	* all the same data +
 	* its visualisation.
+	*
+	* There is an option to
+	* assign prop directly on
+	* "orders", but this
+	* is not reccomended.
 	*/
 	const allOrders = orders.map(
 
@@ -84,7 +95,9 @@ export const AppContainer = () => {
 
 	return (
 		<>
-			<NavigationContainer />
+			<NavigationContainer
+
+			/>
 			<OrdersContainer>
 				{ ordersToShow }
 			</OrdersContainer>

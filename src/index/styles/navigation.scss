@@ -1,8 +1,7 @@
 #mainNav {
-	background-color: #FFF;
-	text-align: center;
-	margin: 5% 0 2.5%;
+	padding: 50px 0;
 	color: #EEE;
+	background-color: #AAD8FF;//#6BBAFD;//#A9D3EC;
 }
 
 .searchContainer {
@@ -11,7 +10,11 @@
 	margin: auto;
 
 	& :global(.MuiInputLabel-root) {
-		color: #999;
+		color: #111;
+	}
+
+	& :global(.MuiOutlinedInput-notchedOutline) {
+		border-color: #111;
 	}
 
 	 & :global(.MuiInputLabel-root.Mui-focused) {

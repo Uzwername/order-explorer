@@ -18,14 +18,21 @@ export const OrderCard = props => (
 	<Paper
 		className = { contentStyles.adaptiveCard }
 		/**
-		* Could also be done via
-		* data-* attribute. However,
-		* in this case one way is not
-		* a lot better than another one.
+		* Preferably to check whether it
+		* works faster with data-order
+		* or props.handleClick( props.order )
 		*/
 		onClick = { props.handleClick }
 		data-order = { JSON.stringify(props.order) }
 	>
+		<Typography
+			variant = "h6"
+			component = "p"
+			align = "center"
+			paragraph = { true }
+		>
+			{ `#${props.order.OrderID}` }
+		</Typography>
 		<Typography
 			variant = "caption"
 			component = "p"
@@ -35,13 +42,6 @@ export const OrderCard = props => (
 			}}
 		>
 			{ props.order.Status }
-		</Typography>
-		<Typography
-			variant = "h6"
-			component = "p"
-			paragraph = { true }
-		>
-			{ `#${props.order.OrderID}` }
 		</Typography>
 		{
 			props.order.Items.map(

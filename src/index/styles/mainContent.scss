@@ -9,13 +9,15 @@
 }
 
 .tabContainer {
+	position: relative;
+	bottom: 25px;
 	width: fit-content;
-	margin: 5% auto 0;
+	margin: 0 auto;
 }
 
 .board {
 	width: 90%;
-	margin: 5% auto;
+	margin: 20px auto;
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
@@ -30,7 +32,7 @@
 	flex: 1 1 auto;
 	max-width: 350px;
 
-	&  .status {
+	& .status {
 		color: #ADADAD;
 		margin: 2.5% 0 10%;
 	}

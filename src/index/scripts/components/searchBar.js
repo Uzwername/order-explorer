@@ -1,15 +1,17 @@
 import React from "react";
+import PropTypes from "prop-types";
 import TextField from "@material-ui/core/TextField";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 
-export const SearchBar = () => (
+export const SearchBar = props => (
 	<TextField
 		id = "searchBar"
 		label = "Search"
 		placeholder = "#3418"
 		fullWidth
+		onChange = { props.handleChange }
 		variant = "outlined"
 		InputLabelProps = {{
 			shrink: true,
@@ -19,10 +21,7 @@ export const SearchBar = () => (
 				<InputAdornment position = "end">
 					<IconButton
 						aria-label = "Search orders"
-						onClick={() => alert(
-							`Hi! The search is not developed yet, `
-								.concat(`sorry for any inconvenience caused.`))}
-
+						onClick={ props.handleSearch }
 					>
 						<SearchIcon />
 					</IconButton>
@@ -31,3 +30,8 @@ export const SearchBar = () => (
 		}}
 	/>
 );
+
+SearchBar.propTypes = {
+	handleChange: PropTypes.func.isRequired,
+	handleSearch: PropTypes.func.isRequired,
+};

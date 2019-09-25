@@ -15,20 +15,17 @@ export const OrderDialog = props => {
 	);
 
 	// Prevents glitch (content flash) on close
-	const classes = orderIsEmpty ?
-		[contentStyles.dialogWindow, contentStyles.hidden] :
+	const className = orderIsEmpty ?
+		contentStyles.hidden :
 		contentStyles.dialogWindow;
 
 	return (
 		<Dialog
 			open = { !orderIsEmpty }
 			onClose = { props.handleClose }
-			className = { classes }
+			className = { className }
 			aria-labelledby = "dialogTitle"
 		>
-			{
-
-			}
 			<DialogTitle
 				className = {contentStyles.dialogTitle}
 			>

@@ -1,23 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { SearchBar } from "IndexComponents/searchBar";
 import { NavTabsContainer } from "IndexContainers/navTabsContainer";
+import { SearchBarContainer } from "IndexContainers/SearchBarContainer";
 import navStyles from "IndexStyles/navigation.scss";
 
 export const Navigation = props => (
-	<nav id = { navStyles.mainNav }>
-		<div className = { navStyles.searchContainer }>
-			<SearchBar />
-			{
-				// Renders tabs until we're in search mode
-				(props.navMode < 2) &&
-				<NavTabsContainer
-					activeTab = { props.navMode }
-					handleTabChange = { props.handleNavModeChange }
+	<>
+		<nav id = { navStyles.mainNav }>
+			<div className = { navStyles.searchContainer }>
+				<SearchBarContainer
+					handleSearch = { props.handleNavModeChange }
 				/>
-			}
-		</div>
-	</nav>
+			</div>
+		</nav>
+		<NavTabsContainer
+			navMode = { props.navMode }
+			handleNavModeChange = { props.handleNavModeChange }
+		/>
+	</>
 );
 
 Navigation.propTypes = {
