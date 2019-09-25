@@ -1,10 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
+import { OrderDialog } from "IndexComponents/orderDialog";
 import contentStyles from "IndexStyles/mainContent.scss";
-import PropTypes from "prop-types";
 
 export const MainContent = props => {
 
@@ -27,6 +28,13 @@ export const MainContent = props => {
 			<Paper
 				key = { e.OrderID }
 				className = { contentStyles.adaptiveCard }
+				/**
+				* Could also be done via
+				* data-* attribute. However,
+				* in this case one way is not
+				* a lot better than another one.
+				*/
+				onClick = { () => props.handleRecordOpen(e) }
 			>
 				<Typography
 					variant = "caption"
@@ -49,6 +57,11 @@ export const MainContent = props => {
 					e.Items.map(
 						innerE => (
 							<Typography
+								/**
+								* SKU is unique inside
+								* each "Card".
+								*/
+								key = { innerE.SKU }
 								component = "p"
 								align = "right"
 							>
@@ -67,7 +80,7 @@ export const MainContent = props => {
 					component = "p"
 					align = "right"
 				>
-					{ e.Total }
+					{ `Total: € ${(e.Total).toFixed(2)}` }
 				</Typography>
 			</Paper>
 		)
@@ -92,6 +105,10 @@ export const MainContent = props => {
 			<div className = { contentStyles.board }>
 				{ orderCards }
 			</div>
+			<OrderDialog
+				order = { props.order }
+				handleClose = { props.handleRecordClose }
+			/>
 		</>
 	);
 };
@@ -100,4 +117,7 @@ MainContent.propTypes = {
 	activeTab: PropTypes.number.isRequired,
 	setActiveTab: PropTypes.func.isRequired,
 	orders: PropTypes.array.isRequired,
+	order: PropTypes.object.isRequired,
+	handleRecordOpen: PropTypes.func.isRequired,
+	handleRecordClose: PropTypes.func.isRequired,
 };

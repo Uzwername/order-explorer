@@ -22,7 +22,10 @@ export const Navigation = () => (
 						<InputAdornment position = "end">
 							<IconButton
 								aria-label = "Search orders"
-								onClick={() => alert(`Hi!`)}
+								onClick={() => alert(
+									`Hi! The search is not developed yet, `
+										.concat(`sorry for any inconvenience caused.`))}
+
 							>
 								<SearchIcon />
 							</IconButton>

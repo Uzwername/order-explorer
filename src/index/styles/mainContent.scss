@@ -16,6 +16,7 @@
 }
 
 .adaptiveCard {
+	cursor: pointer;
 	position: relative;
 	margin: 2.5%;
 	padding: 5%;
@@ -26,6 +27,18 @@
 	&  .status {
 		color: #ADADAD;
 		margin: 2.5% 0 10%;
+	}
+
+}
+
+.dialogWindow {
+
+	& .dialogTitle {
+		@extend %centeredText;
+	}
+
+	& .prettyJSON {
+		padding: 5%;
 	}
 
 }
