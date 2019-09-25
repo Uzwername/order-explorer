@@ -1,3 +1,7 @@
+%centeredText {
+	text-align: center;
+}
+
 .tabContainer {
 	width: fit-content;
 	margin: auto;
@@ -11,11 +15,17 @@
 	justify-content: space-between;
 }
 
-.adaptivePaper {
+.adaptiveCard {
+	position: relative;
 	margin: 2.5%;
-	padding: 2.5%;
+	padding: 5%;
 	overflow: hidden;
-	flex: 1 1 100px;
+	flex: 1 1 auto;
 	max-width: 350px;
-	min-width: 100px;
+
+	&  .status {
+		color: #ADADAD;
+		margin: 2.5% 0 10%;
+	}
+
 }

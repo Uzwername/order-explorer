@@ -16,15 +16,13 @@ const Index = () => (
 const theme = createMuiTheme({
 	palette: {
 		primary: {
-			light: `#757ce8`,
-			main: `#00FF00`,
-			dark: `#002884`,
-			contrastText: `#fff`,
+			main: `#D10C15`,
+			dark: `#666`,
+			contrastText: `#FFF`,
 		},
 		secondary: {
-			light: `#ff7961`,
-			main: `#f44336`,
-			dark: `#ba000d`,
+			main: `#666`,
+			dark: `#777`,
 			contrastText: `#000`,
 		},
 	},

@@ -6,10 +6,16 @@
 }
 
 .searchContainer {
+
 	width: 80%;
 	margin: auto;
-}
 
-.highlighted{
-	color: #61DAFB;
+	& :global(.MuiInputLabel-root) {
+		color: #999;
+	}
+
+	 & :global(.MuiInputLabel-root.Mui-focused) {
+		color: #D10C15;
+	}
+
 }

@@ -3,10 +3,20 @@ import Paper from "@material-ui/core/Paper";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import Typography from "@material-ui/core/Typography";
-import mainContentStyles from "IndexStyles/mainContent.scss";
+import contentStyles from "IndexStyles/mainContent.scss";
 import PropTypes from "prop-types";
 
 export const MainContent = props => {
+
+	const constructEquation = (e, result) => {
+
+		const _result = result.toFixed(2);
+
+		const equation = `SKU:(${e.SKU}) x ${e.Quantity} = ${_result}`;
+
+		return equation;
+
+	};
 
 	/**
 	* Generates a "card"
@@ -16,17 +26,46 @@ export const MainContent = props => {
 		e => (
 			<Paper
 				key = { e.OrderID }
-				className = { mainContentStyles.adaptivePaper }
+				className = { contentStyles.adaptiveCard }
 			>
+				<Typography
+					variant = "caption"
+					component = "p"
+					align = "center"
+					classes = {{
+						root: contentStyles.status,
+					}}
+				>
+					{ e.Status }
+				</Typography>
 				<Typography
 					variant = "h6"
 					component = "p"
+					paragraph = { true }
 				>
 					{ `#${e.OrderID}` }
 				</Typography>
+				{
+					e.Items.map(
+						innerE => (
+							<Typography
+								component = "p"
+								align = "right"
+							>
+								{
+									constructEquation(
+										innerE,
+										innerE.Price * innerE.Quantity
+									)
+								}
+							</Typography>
+						)
+					)
+				}
+				<br/>
 				<Typography
-					variant = "p"
 					component = "p"
+					align = "right"
 				>
 					{ e.Total }
 				</Typography>
@@ -36,7 +75,7 @@ export const MainContent = props => {
 
 	return (
 		<>
-			<div className = { mainContentStyles.tabContainer }>
+			<div className = { contentStyles.tabContainer }>
 				<Paper square>
 					<Tabs
 						value = { props.activeTab }
@@ -50,7 +89,7 @@ export const MainContent = props => {
 					</Tabs>
 				</Paper>
 			</div>
-			<div className = { mainContentStyles.board }>
+			<div className = { contentStyles.board }>
 				{ orderCards }
 			</div>
 		</>
