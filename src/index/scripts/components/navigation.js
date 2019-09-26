@@ -10,12 +10,14 @@ export const Navigation = props => (
 			<div className = { navStyles.searchContainer }>
 				<SearchBarContainer
 					handleSearch = { props.handleNavModeChange }
+					handleShuffle = { props.handleShuffle }
 				/>
 			</div>
 		</nav>
 		<NavTabsContainer
 			navMode = { props.navMode }
 			handleNavModeChange = { props.handleNavModeChange }
+			handleShuffle = { props.handleShuffle }
 		/>
 	</>
 );
@@ -23,4 +25,5 @@ export const Navigation = props => (
 Navigation.propTypes = {
 	navMode: PropTypes.number.isRequired,
 	handleNavModeChange: PropTypes.func.isRequired,
+	handleShuffle: PropTypes.func.isRequired,
 };

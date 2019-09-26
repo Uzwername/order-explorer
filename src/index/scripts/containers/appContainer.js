@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import { Navigation } from "IndexComponents/navigation";
 import { OrdersContainer } from "IndexContainers/ordersContainer";
 import { NavigationContainer } from "IndexContainers/navigationContainer";
 import { OrderCard } from "IndexComponents/orderCard";
@@ -83,20 +82,80 @@ export const AppContainer = () => {
 	);
 
 	/**
-	* Sorts & filters orders as needed
-	* using JSON data. After all
-	* operations are done, returns
-	* all necessary visualisations.
+	* Returns all necessary
+	* visualisations.
 	*/
-	const ordersToShow = allOrders
-		.sort( (a,b) => {} )
-		.filter(v => true)
-		.map( e => e.View );
+	const [ordersToShow, setOrdersToShow] = useState(
+		allOrders.map( e => e.View )
+	);
+
+	/**
+	* Makes it easy to filter and/or
+	* sort records & update them
+	* with filtered and/or sorted
+	* results.
+	*/
+	const arrangeOrders = (filterFn, sortFn) => {
+
+		/**
+		* If none is function, returns.
+		*/
+		if (
+			typeof sortFn !== `function` &&
+			typeof filterFn !== `function`
+		) return;
+
+		/**
+		* To avoid undefined
+		* errors.
+		*/
+		let filteredOrders;
+		let sortedOrders;
+
+		/**
+		* Filters all orders
+		* if filterFn is present.
+		* Filtering is previous
+		* to sorting in order to
+		* possibly reduce time
+		* complexity.
+		*/
+		if ( filterFn ) {
+
+			filteredOrders = allOrders
+				.filter(
+					filterFn
+				);
+
+		}
+
+		/**
+		* Sorts either previously
+		* filteredOrders or all
+		* orders if filterFn was
+		* not provided.
+		*/
+		if ( sortFn ) {
+
+			sortedOrders = (filteredOrders || allOrders)
+				.sort(
+					sortFn
+				);
+
+		}
+
+		setOrdersToShow(
+			(sortedOrders || filteredOrders).map(
+				e => e.View
+			)
+		);
+
+	};
 
 	return (
 		<>
 			<NavigationContainer
-
+				handleShuffle = { arrangeOrders }
 			/>
 			<OrdersContainer>
 				{ ordersToShow }

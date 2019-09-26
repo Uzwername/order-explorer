@@ -10,7 +10,17 @@ export const NavTabsContainer = props => {
 
 	const handleTabChange = (event, newActiveTab) => setActiveTab(newActiveTab);
 
-	const handleNavModeChange = () => props.handleNavModeChange(0);
+	const handleNavModeChange = () => {
+
+		// Restores tabs
+		props.handleNavModeChange(0);
+
+		// Restores all cards
+		props.handleShuffle(
+			() => true
+		);
+
+	};
 
 	return (
 		<NavTabs
@@ -26,4 +36,5 @@ export const NavTabsContainer = props => {
 NavTabsContainer.propTypes = {
 	navMode: PropTypes.number.isRequired,
 	handleNavModeChange: PropTypes.func.isRequired,
+	handleShuffle: PropTypes.func.isRequired,
 };

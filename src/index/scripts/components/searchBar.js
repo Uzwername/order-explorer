@@ -9,9 +9,11 @@ export const SearchBar = props => (
 	<TextField
 		id = "searchBar"
 		label = "Search"
-		placeholder = "#3418"
+		placeholder = "Shipped"
 		fullWidth
+		value = { props.searchBarTextValue }
 		onChange = { props.handleChange }
+		onKeyPress = { props.handleSearch }
 		variant = "outlined"
 		InputLabelProps = {{
 			shrink: true,
@@ -34,4 +36,5 @@ export const SearchBar = props => (
 SearchBar.propTypes = {
 	handleChange: PropTypes.func.isRequired,
 	handleSearch: PropTypes.func.isRequired,
+	searchBarTextValue: PropTypes.string.isRequired,
 };
