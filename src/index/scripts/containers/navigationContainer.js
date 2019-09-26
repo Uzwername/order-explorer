@@ -4,18 +4,10 @@ import { Navigation } from "IndexComponents/navigation";
 
 export const NavigationContainer = props => {
 
-	/**
-	* Possible modes:
-	* 0: All orders Tab
-	* 1: Stage View
-	* 2: Global Search Mode
-	*/
-	const [navMode, setNavMode] = React.useState(0);
-
 	return (
 		<Navigation
-			navMode = { navMode }
-			handleNavModeChange = { setNavMode }
+			navMode = { props.navMode }
+			handleNavModeChange = { props.setNavMode }
 			handleShuffle = { props.handleShuffle }
 		/>
 	);
@@ -23,5 +15,7 @@ export const NavigationContainer = props => {
 };
 
 NavigationContainer.propTypes = {
+	navMode: PropTypes.number.isRequired,
+	setNavMode: PropTypes.func.isRequired,
 	handleShuffle: PropTypes.func.isRequired,
 };

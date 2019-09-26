@@ -17,13 +17,14 @@ const constructEquation = (order, result) => {
 export const OrderCard = props => (
 	<Paper
 		className = { contentStyles.adaptiveCard }
+		onClick = { props.handleClick }
 		/**
 		* Preferably to check whether it
 		* works faster with data-order
 		* or props.handleClick( props.order )
 		*/
-		onClick = { props.handleClick }
 		data-order = { JSON.stringify(props.order) }
+		style = { props.style }
 	>
 		<Typography
 			variant = "h6"
@@ -78,4 +79,5 @@ export const OrderCard = props => (
 OrderCard.propTypes = {
 	order: PropTypes.object.isRequired,
 	handleClick: PropTypes.func.isRequired,
+	style: PropTypes.object
 };

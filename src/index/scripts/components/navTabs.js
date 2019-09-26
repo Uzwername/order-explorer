@@ -25,7 +25,7 @@ export const NavTabs = props => {
 		) : (
 			<Button
 				variant = "contained"
-				onClick = { props.handleNavModeChange }
+				onClick = { props.handleNavModeRestore }
 			>
 				Back to overview
 			</Button>
@@ -43,5 +43,5 @@ NavTabs.propTypes = {
 	activeTab: PropTypes.number.isRequired,
 	setActiveTab: PropTypes.func.isRequired,
 	deactivated: PropTypes.bool,
-	handleNavModeChange: PropTypes.func.isRequired,
+	handleNavModeRestore: PropTypes.func.isRequired,
 };

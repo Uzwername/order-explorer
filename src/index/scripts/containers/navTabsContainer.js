@@ -4,13 +4,12 @@ import { NavTabs } from "IndexComponents/navTabs";
 
 export const NavTabsContainer = props => {
 
-	const [activeTab, setActiveTab] = React.useState(0);
-
 	const deactivated = (props.navMode > 1);
 
-	const handleTabChange = (event, newActiveTab) => setActiveTab(newActiveTab);
+	const handleTabChange = (event, newActiveTab) =>
+		props.handleNavModeChange(newActiveTab);
 
-	const handleNavModeChange = () => {
+	const handleNavModeRestore = () => {
 
 		// Restores tabs
 		props.handleNavModeChange(0);
@@ -24,10 +23,10 @@ export const NavTabsContainer = props => {
 
 	return (
 		<NavTabs
-			activeTab = { activeTab }
+			activeTab = { props.navMode }
 			setActiveTab = { handleTabChange }
 			deactivated = { deactivated }
-			handleNavModeChange = { handleNavModeChange }
+			handleNavModeRestore = { handleNavModeRestore }
 		/>
 	);
 

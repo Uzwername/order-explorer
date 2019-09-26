@@ -26,6 +26,14 @@ export const AppContainer = () => {
 	// All possible orders
 	const [orders, setOrders] = useState( getOrders() );
 
+	/**
+	* Possible modes:
+	* 0: All Orders Tab
+	* 1: Stage View
+	* 2: Global Search Mode
+	*/
+	const [navMode, setNavMode] = React.useState(0);
+
 	// Modal state (modal is used insted of pages for the sake of easiness)
 	const [orderOpened, setOrderOpened] = React.useState({});
 	const handleOrderClose = () => {
@@ -37,7 +45,7 @@ export const AppContainer = () => {
 
 	};
 
-	const openOrderModule = e => {
+	const openOrderModal = e => {
 
 		const orderData = JSON.parse(
 			e.currentTarget.getAttribute(`data-order`)
@@ -71,7 +79,7 @@ export const AppContainer = () => {
 				<OrderCard
 					key = { e.OrderID }
 					order = { e }
-					handleClick = { openOrderModule }
+					handleClick = { openOrderModal }
 				/>
 			);
 
@@ -156,8 +164,12 @@ export const AppContainer = () => {
 		<>
 			<NavigationContainer
 				handleShuffle = { arrangeOrders }
+				navMode = { navMode }
+				setNavMode = { setNavMode }
 			/>
-			<OrdersContainer>
+			<OrdersContainer
+				modality = { navMode }
+			>
 				{ ordersToShow }
 			</OrdersContainer>
 			<OrderDialog
